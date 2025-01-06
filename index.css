@@ -70,6 +70,26 @@ button:active {
     color: black;
 }
 
+.delete-button {
+  background-color: red;
+}
+
+.edit-button {
+  background-color: darkgoldenrod;
+}
+
+.delete-button, .edit-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+  position: relative;
+  left: 105px;
+}
+
+
+
 label {
     position: absolute;
     top: -10px;

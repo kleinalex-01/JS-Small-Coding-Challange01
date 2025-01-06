@@ -48,16 +48,37 @@ function checkDuplicate() {
     renderList()
 }
 
+
 // Function to add an item to the shopping list
 function renderList() {
     shoppingList.innerHTML = ''
     listArr.forEach((gift) => {
         const listItem = document.createElement('li')
+        const delButton = document.createElement('button')
+        const editButton = document.createElement('button')
         listItem.textContent = gift
+        delButton.textContent = 'Delete'
+        editButton.textContent = 'Edit'
+        delButton.classList.add('delete-button')
+        editButton.classList.add('edit-button')
         shoppingList.appendChild(listItem)
+        listItem.appendChild(delButton)
+        listItem.appendChild(editButton)
+        delButton.addEventListener('click', () => {
+            listArr.splice(listArr.indexOf(gift), 1)
+            renderList()
+        })
+        editButton.addEventListener('click', () => {
+            const newGift = prompt('Enter a new gift:')
+            if (newGift) {
+                listArr[listArr.indexOf(gift)] = newGift
+                renderList()
+            }
+        })
     })
     itemInput.value = ''; // Clear the input field
 }
+
 
 // Add event listener to button
 addItemButton.addEventListener('click', checkDuplicate)
